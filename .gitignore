@@ -1,4 +1,5 @@
 *.log*
+*.jou*
 vivado_hls.app
 MET_Sim
 PuppiMETxy
