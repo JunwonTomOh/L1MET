@@ -138,6 +138,8 @@ struct Particle_xy{
 
 struct METCtrlToken{
     ap_uint<1> start_of_orbit;
+    ap_uint<1> start;
+    ap_uint<1> last;
     bool dataValid;
     bool frameValid;
 };
