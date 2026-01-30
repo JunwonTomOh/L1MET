@@ -8,6 +8,8 @@
 #include "../utils/bit_encoding.h"
 
 #define NPARTICLES 128
+#define N_INPUT_LINKS 36
+#define N_Frames 54
 
 typedef ap_ufixed<14, 12, AP_TRN, AP_SAT> pt_t;
 typedef ap_ufixed<28, 24, AP_TRN, AP_SAT> pt2_t;
@@ -31,8 +33,8 @@ typedef ap_fixed<2+LUT_tri_T_Float, 2> LUT_tri_T;
 typedef ap_uint<3> ParticleID;
 
 constexpr int INTPHI_PI = 720;
-constexpr double ETAPHI_LSB = M_PI / INTPHI_PI;
-inline double floatPhi(phi_t phi) { return phi.to_float() * ETAPHI_LSB; }
+constexpr float ETAPHI_LSB = M_PI / INTPHI_PI;
+inline float floatPhi(phi_t phi) { return phi.to_float() * ETAPHI_LSB; }
 
 
 struct Sum {
@@ -141,9 +143,10 @@ struct Particle_xy{
 
 struct METCtrlToken{
     ap_uint<1> start_of_orbit;
+    ap_uint<1> start;
+    ap_uint<1> last;
     bool dataValid;
     bool frameValid;
 };
 
 #endif
-

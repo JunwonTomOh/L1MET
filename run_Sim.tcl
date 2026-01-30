@@ -40,6 +40,7 @@ add_files -tb tb_puppimet.cpp -cflags "${cflags}"
 add_files -tb ./firmware/puppimet.cpp -cflags "${cflags}"
 
 add_files -tb ./data/ParticlesIn.txt
+add_files -tb ./data/DeregionizerIn.txt
 add_files -tb ./data/METsOut.txt
 
 # Solution
