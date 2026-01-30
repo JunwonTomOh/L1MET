@@ -86,8 +86,8 @@ int main() {
       }
       // HLS MET Calculation
       puppimet_xy(particles, met_xy, token_d, token_q);
+      pxpy_to_ptphi(met_xy, hw_met, token_d, token_q);
     }
-    pxpy_to_ptphi(met_xy, hw_met, token_d, token_q);
     // SW MET pT, Phi
     met_sw_pt = hypot(met_sw_px, met_sw_py);
     met_sw_phi = atan2(met_sw_py, met_sw_px);
