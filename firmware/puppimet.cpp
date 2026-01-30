@@ -1,4 +1,5 @@
 #include "puppimet.h"
+#include "lut.h"
 #include <hls_math.h>
 // #include <hls_stream.h>
 #include <cassert>
@@ -8,7 +9,36 @@
 #include <ap_fixed.h>
 #endif
 
-typedef ap_fixed<12, 2> LUT_tri_T;
+
+void Get_LUT(phi_t in_phi, LUT_tri_T &out_sin, LUT_tri_T &out_cos){
+
+    int sin_index = 0;
+    int cos_index = 0;
+
+    if (in_phi <= -360)      sin_index = in_phi + 720;
+    else if (in_phi < 0)     sin_index = -in_phi;
+    else if (in_phi <= 360)  sin_index = in_phi;
+    else                  sin_index = 720 - in_phi;
+    
+    if (in_phi <= -360)      cos_index = in_phi + 720;
+    else if (in_phi < 0)     cos_index = -in_phi;
+    else if (in_phi <= 360)  cos_index = in_phi;
+    else                  cos_index = 720 - in_phi;
+    
+
+    LUT_tri_T sin_mag = sin_LUT[sin_index];
+    LUT_tri_T cos_mag = cos_LUT[cos_index];
+
+    
+    LUT_tri_T sin_cal = sin_mag;
+    if (in_phi < 0) sin_cal = -sin_cal;
+
+    LUT_tri_T cos_cal = cos_mag;
+    if (in_phi < -360 || in_phi > 360) cos_cal = -cos_cal;
+
+    out_sin = sin_cal;
+    out_cos = cos_cal;
+}
 
 void Get_xy(Particle_T in_particles, Particle_xy &proj_xy) {
     // This function calculates x, y projection values using LUT

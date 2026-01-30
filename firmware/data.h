@@ -25,6 +25,9 @@ typedef ap_fixed<8, 1> tri_t; // for trigonometric values, -1 ~ 1
 typedef ap_fixed<32, 2> poly_t;
 typedef ap_fixed<32, 2> poly2_t;
 
+#define LUT_tri_T_Float 10
+typedef ap_fixed<2+LUT_tri_T_Float, 2> LUT_tri_T;
+
 typedef ap_uint<3> ParticleID;
 
 constexpr int INTPHI_PI = 720;
