@@ -8,6 +8,8 @@
 #include "../utils/bit_encoding.h"
 
 #define NPARTICLES 128
+#define N_INPUT_LINKS 36
+#define N_Frames 54
 
 typedef ap_ufixed<14, 12, AP_TRN, AP_SAT> pt_t;
 typedef ap_ufixed<28, 24, AP_TRN, AP_SAT> pt2_t;
@@ -24,6 +26,9 @@ typedef ap_fixed<8, 1> tri_t; // for trigonometric values, -1 ~ 1
 // typedef ap_fixed<21, 3> poly_t;
 typedef ap_fixed<32, 2> poly_t;
 typedef ap_fixed<32, 2> poly2_t;
+
+#define LUT_tri_T_Float 10
+typedef ap_fixed<2+LUT_tri_T_Float, 2> LUT_tri_T;
 
 typedef ap_uint<3> ParticleID;
 
@@ -145,4 +150,3 @@ struct METCtrlToken{
 };
 
 #endif
-
