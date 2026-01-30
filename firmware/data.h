@@ -28,8 +28,8 @@ typedef ap_fixed<32, 2> poly2_t;
 typedef ap_uint<3> ParticleID;
 
 constexpr int INTPHI_PI = 720;
-constexpr float ETAPHI_LSB = M_PI / INTPHI_PI;
-inline float floatPhi(phi_t phi) { return phi.to_float() * ETAPHI_LSB; }
+constexpr double ETAPHI_LSB = M_PI / INTPHI_PI;
+inline double floatPhi(phi_t phi) { return phi.to_float() * ETAPHI_LSB; }
 
 
 struct Sum {
@@ -138,8 +138,6 @@ struct Particle_xy{
 
 struct METCtrlToken{
     ap_uint<1> start_of_orbit;
-    ap_uint<1> start;
-    ap_uint<1> last;
     bool dataValid;
     bool frameValid;
 };
